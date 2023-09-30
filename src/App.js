@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment } from './store/cart.js';
+import { decrease, increase } from './store/balance';
 
 function App() {
 
@@ -14,11 +15,14 @@ function App() {
   const incrementBtn = () => {
     console.log("increment value")
     dispatch(increment())
+
+    dispatch(increase())
   }
 
   const decrementBtn = () => {
     console.log("decrement value")
     dispatch(decrement())
+    // dispatch(decrease())
   }
 
   return (
