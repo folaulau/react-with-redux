@@ -1,23 +1,64 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import Header from './Header';
+import Footer from './Footer';
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from './store/cart.js';
 
 function App() {
+
+  const count = useSelector((state) => state.counter.value)
+
+  const dispatch = useDispatch()
+
+  const incrementBtn = () => {
+    console.log("increment value")
+    dispatch(increment())
+  }
+
+  const decrementBtn = () => {
+    console.log("decrement value")
+    dispatch(decrement())
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <div className='row'>
+        <div className='col-12'>
+          
+          <div className='row'>
+            <div className='col-12'>
+            <Header />
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-12'>
+              Home
+              <button
+          type='button'
+          className='btn btn-outline-primary'
+          onClick={() => incrementBtn()}
         >
-          Learn React
-        </a>
-      </header>
+          Increment
+        </button>
+        <span>{count}</span>
+        <button
+         type='button'
+         className='btn btn-outline-primary'
+          onClick={() => decrementBtn()}
+        >
+          Decrement
+        </button>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-12'>
+            <Footer />
+            </div>
+          </div>
+        </div>
+      </div>
+     
     </div>
   );
 }
