@@ -13,9 +13,11 @@ export const balanceSlice = createSlice({
       // immutable state based off those changes.
       // Also, no return statement is required from these functions.
       state.value += 1
+      console.log("increase balance value")
     },
     decrease: (state) => {
       state.value -= 1
+      console.log("decrease balance value")
     },
   },
 })
